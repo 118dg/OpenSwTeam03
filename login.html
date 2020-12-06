@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>로그인 화면</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" href="login.css">
+
+</head>
+
+<body>
+
+    <!-- Nav Bar -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light navbar-custom">
+        <a class="navbar-brand" href="/">
+            <img src="logo.png" class="d-inline-block align-top" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" aria-orientation="vertical">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">방찾기</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/">방내놓기</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/">룸메찾기</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/">커뮤니티</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/">알림</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link sub" href="/">회원가입</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/">로그인</a>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Login -->
+
+    <div class="wrapper">
+        <p class="login-wrap">
+            <span>로그인</span>
+        </p>
+
+        <form action="#이동할곳 URL#" name="login_form" class="login">
+            <input class="id" type="text" id="id_val" name="id_val" placeholder="아이디"><br><br>
+            <input class="pw" type="password" id="pw_val" name="pw_val" placeholder="비밀번호"><br><br>
+            <input class="btn" type="button" value="로그인" onclick="check_input()">
+        </form>
+
+        <p class="signup-wrap">
+            <span>아직 회원이 아니세요?</span>
+            <span><a href="/" class="ewhain">이화인 계정</a>으로 회원가입</span>
+        </p>
+    </div>
+
+</body>
+
+</html>
