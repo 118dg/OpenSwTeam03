@@ -13,8 +13,6 @@ const googleAuthBtn = $('#google-auth')[0];
 
 let submitAction = "sign-up", forceToSignIn = false
 
-
-
 const validateForm = (email, pass = {length: 8}) => {
 	const pattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
 	return pattern.test(email) && pass.length >= 8
@@ -40,7 +38,7 @@ swapSignInUpBtn.addEventListener("click", () => {
 form.addEventListener("submit", e => e.preventDefault())
 
 formSubmitBtn.addEventListener("click", (e) => {
-	const email = form['emailInput'].value
+	const email = form['emailInput'].value +'@naver.com'
 	const pass = form['passwordInput'].value
 	if (submitAction === "sign-up") {
 		if (validateForm(email, pass)) {
