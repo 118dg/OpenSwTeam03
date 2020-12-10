@@ -18,7 +18,22 @@ function App() {
   return (
     <>
       {init ? <AppRouter isLoggedIn={isLoggedIn} /> : "Initializing..."}
-      <footer>&copy; {new Date().getFullYear()} ewhabangbang </footer>
+    <html>
+        <head>
+          <script src="routes/Search.js"></script>
+          </head>
+            <body>
+                <div class="input-group">
+                    <div class="input-group-text" id="basic-addon1">
+                        <span class = "search"></span>
+                    </div>
+                    <input autofocus placeholder="search" class="form-control" type="text" autoComplete="off" name="search" id="search"/>
+                </div>
+                <ul class="list-group" id="list"></ul>
+
+            </body>
+        </html>
+        <footer>&copy; {new Date().getFullYear()} ewhabangbang </footer>
     </>
   );
 }
