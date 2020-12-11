@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-firestore.js"></script>
+  <link rel="stylesheet" href="myprofile.css" />
+  <title>룸메찾기 화면</title>
+  
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+      <link rel="stylesheet" type="text/css" href="myprofile.css">
+
+</head>
+
+<body>
+    
+    <!-- Nav Bar -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light navbar-custom">
+        <a class="navbar-brand" href="/">
+            <img src="logo.png" class="d-inline-block align-top" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" aria-orientation="vertical">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">방찾기</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/">방내놓기</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/">룸메찾기</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/">커뮤니티</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/">알림</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link sub" href="/">회원가입</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/">로그인</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Category -->
+
+    <div class="wrapper">
+        <p class="roommate-wrap">
+            <span>룸메찾기</span>
+        </p>
+
+        <div class="content">
+            <div class="content_column content_column-goods">
+                <a href="#">내 정보</a>
+            </div>
+            <div class="content_column content_column-notice">
+                <a href="roommate.html">룸메찾기</a>
+            </div>
+            <hr>
+        </div>
+    </div>
+
+  <div class="content">
+    <form id="add-memo-form">
+      희망지역<input type="text" name="name" placeholder="입력해주세요!" /><br>
+      희망금액<input type="text" name="desc" placeholder="입력해주세요!" /><br>
+      희망입주일<input type="text" name="add1" placeholder="입력해주세요!" /><br>
+      수면시간<input type="text" name="add2" placeholder="입력해주세요!" /><br>
+      흡연여부<input type="text" name="add3" placeholder="입력해주세요!" /><br>
+      성향<input type="text" name="add4" placeholder="입력해주세요!" /><br>
+      수면시간<input type="text" name="add5" placeholder="입력해주세요!" /><br>
+      
+      <button>수정완료</button>
+    </form>
+
+    <ul id="memo-list"></ul>
+  </div>
+
+
+  <script>
+    // Initialize Firebase
+    var firebaseConfig = {
+      apiKey: "AIzaSyAMN00sa0yETmOBWSoNIj84hJjOMY7ITIY",
+      authDomain: "osp-signup.firebaseapp.com",
+      projectId: "osp-signup",
+      storageBucket: "osp-signup.appspot.com",
+      messagingSenderId: "784722732584",
+      appId: "1:784722732584:web:e2713329b071c0caa2f71d"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+  </script>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
