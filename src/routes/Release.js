@@ -5,7 +5,7 @@ const Release = () => {
     const [nweet, setNweet] = useState("");
   const [nweets, setNweets] = useState([]);
   const getNweets = async () => {
-    const dbNweets = await dbService.collection("nweets").get();
+    const dbNweets = await dbService.collection("release").get();
     dbNweets.forEach((document) => {
       const nweetObject = {
         ...document.data(),
@@ -19,8 +19,8 @@ const Release = () => {
   }, []);
   const onSubmit = async (event) => {
     event.preventDefault();
-    await dbService.collection("nweets").add({
-      nweet,
+    await dbService.collection("release").add({
+      text: nweet,
       createdAt: Date.now(),
     });
     setNweet("");
