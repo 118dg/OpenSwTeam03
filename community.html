@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>룸메찾기 화면</title>
+
+    <!-- Bootstrap -->
+    <meta name="viewport" content="width-device-width, initial-scale-1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" href="community.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+
+</head>
+
+<body>
+
+    <!-- Nav Bar -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light navbar-custom">
+        <a class="navbar-brand" href="/">
+            <img src="logo.png" class="d-inline-block align-top" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" aria-orientation="vertical">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">방찾기</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/">방내놓기</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/">룸메찾기</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/">커뮤니티</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/">알림</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link sub" href="/">회원가입</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/">로그인</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <p class="community-wrap">
+        <span>건물 커뮤니티</span>
+    </p>
+
+    <div class="container">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>번호</th>
+                    <th>제목</th>
+                    <th>작성자</th>
+                    <th>날짜</th>
+                    <th>조회수</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td><a href="#">제목 아무거나</a></td>
+                    <td>작성자 어쩌구</td>
+                    <td>2020.12.15</td>
+                    <td>1</td>
+                </tr>
+
+                <tr>
+                    <td>2</td>
+                    <td><a href="#">제목 아무거나</a></td>
+                    <td>작성자 어쩌구</td>
+                    <td>2020.12.15</td>
+                    <td>1</td>
+                </tr>
+
+                <tr>
+                    <td>3</td>
+                    <td><a href="#">제목 아무거나</a></td>
+                    <td>작성자 어쩌구</td>
+                    <td>2020.12.15</td>
+                    <td>1</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <button class="btn pull-right">글쓰기</button>
+
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1">Previous</a>
+                </li>
+
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+
+                <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                </li>
+            </ul>
+        </nav>
+
+
+</body>
+
+</html>

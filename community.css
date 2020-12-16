@@ -1,0 +1,90 @@
+/* 전체 화면 */
+@font-face {
+    font-family: "Godo";
+    src: url("GodoB.ttf");
+}
+  
+#full-size{
+    height:100%;
+    width:100%;
+    overflow: auto; 
+}
+  
+html {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: "Godo";
+}
+
+body {
+    font-family: "Godo";
+    color: black;
+    width: 100%;
+    height: 100%; 
+    margin: 0;
+    padding: 0;   
+}
+  
+/* 네비바 */
+a img{
+   width:10%;
+}
+
+.navbar-brand{
+    margin-right: -21%; 
+}
+
+
+.navbar-custom{
+    background-color: white;
+}
+
+.navbar-light .navbar-nav .nav-link{
+    color:black;
+    font-size: 1.2rem;
+}
+
+.nav-link.active{
+    color:#00462a!important;
+}
+
+.nav-link.sub{
+    color: #A6A6A6!important;
+}
+
+/* 커뮤니티 화면 */
+p{
+    margin-top:8%;
+    margin-left:44%;
+    font-size: 3rem;
+    border: none!important;
+}
+
+.btn{
+    background-color: #00462a!important;
+    border:none!important;
+    color: white;
+  
+}
+
+.btn:hover{
+    color:white;
+}
+
+.container{
+    margin-top: 5%;
+}
+
+.page-link{
+    color:black;
+}
+
+.page-item.disabled .page-link{
+    color:black;
+}
+
+a{
+    color:black;
+}
