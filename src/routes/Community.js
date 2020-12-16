@@ -1,29 +1,41 @@
-import { dbService } from "fbase";
+import { dbService, storageService } from "fbase";
 import React, { useEffect, useState } from "react";
+import Nweet from "components/Nweet";
+import { v4 as uuidv4 } from "uuid";
 
-const Community = () => {
-    const [nweet, setNweet] = useState("");
+const Community = ({userObj}) => { 
   const [nweets, setNweets] = useState([]);
-  const getNweets = async () => {
-    const dbNweets = await dbService.collection("Community").get();
-    dbNweets.forEach((document) => {
-      const nweetObject = {
-        ...document.data(),
-        id: document.id,
-      };
-      setNweets((prev) => [nweetObject, ...prev]);
-    });
-  };
+  const [nweet, setNweet] = useState("");
+  const [attachment, setAttachment] = useState("");
+
   useEffect(() => {
-    getNweets();
+    dbService.collection("Community").onSnapshot((snapshot) => {
+      const nweetArray = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setNweets(nweetArray);
+    });
   }, []);
   const onSubmit = async (event) => {
     event.preventDefault();
-    await dbService.collection("Community").add({
+    let attachmentUrl = "";
+    if (attachment !== "") {
+      const attachmentRef = storageService
+        .ref()
+        .child(`${userObj.uid}/${uuidv4()}`);
+      const response = await attachmentRef.putString(attachment, "data_url");
+      attachmentUrl = await response.ref.getDownloadURL();
+    }
+    const nweetObj = {
       text: nweet,
       createdAt: Date.now(),
-    });
+      creatorId: userObj.uid,
+      attachmentUrl,
+    };
+    await dbService.collection("Community").add(nweetObj);
     setNweet("");
+    setAttachment("");
   };
   const onChange = (event) => {
     const {
@@ -31,7 +43,21 @@ const Community = () => {
     } = event;
     setNweet(value);
   };
-  console.log(nweets);
+  const onFileChange = (event) => {
+    const {
+      target: { files },
+    } = event;
+    const theFile = files[0];
+    const reader = new FileReader();
+    reader.onloadend = (finishedEvent) => {
+      const {
+        currentTarget: { result },
+      } = finishedEvent;
+      setAttachment(result);
+    };
+    reader.readAsDataURL(theFile);
+  };
+  const onClearAttachment = () => setAttachment(null);
   return (
     <div>
       <form onSubmit={onSubmit}>
@@ -42,13 +68,22 @@ const Community = () => {
           placeholder="새 글을 작성해주세요!"
           maxLength={300}
         />
+        <input type="file" accept="image/*" onChange={onFileChange} />
         <input type="submit" value="저장" />
+        {attachment && (
+          <div>
+            <img src={attachment} width="50px" height="50px" />
+            <button onClick={onClearAttachment}>취소</button>
+          </div>
+        )}
       </form>
       <div>
         {nweets.map((nweet) => (
-          <div key={nweet.id}>
-            <h4>{nweet.nweet}</h4>
-          </div>
+            <Nweet
+            key={nweet.id}
+            nweetObj={nweet}
+            isOwner={nweet.creatorId === userObj.uid}
+          />
         ))}
       </div>
     </div>
