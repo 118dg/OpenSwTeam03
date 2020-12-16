@@ -4,36 +4,30 @@ import {authService} from "fbase";
 
 function App() {
   const [init, setInit] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userObj, setUserObj] = useState(null);
+
   useEffect(() => {
     authService.onAuthStateChanged((user) => {
       if (user) {
-        setIsLoggedIn(true);
+        setUserObj({
+          displayName: user.displayName,
+          uid: user.uid,
+        });
       } else {
-        setIsLoggedIn(false);
+        setUserObj(null);
       }
       setInit(true);
     });
   }, []);
+  
   return (
     <>
-      {init ? <AppRouter isLoggedIn={isLoggedIn} /> : "Initializing..."}
-    <html>
-        <head>
-          <script src="routes/Search.js"></script>
-          </head>
-            <body>
-                <div class="input-group">
-                    <div class="input-group-text" id="basic-addon1">
-                        <span class = "search"></span>
-                    </div>
-                    <input autofocus placeholder="search" class="form-control" type="text" autoComplete="off" name="search" id="search"/>
-                </div>
-                <ul class="list-group" id="list"></ul>
-
-            </body>
-        </html>
-        <footer>&copy; {new Date().getFullYear()} ewhabangbang </footer>
+      {init ? (
+        <AppRouter
+        isLoggedIn={Boolean(userObj)}
+        userObj={userObj}
+      />
+   ) : "Initializing..."}
     </>
   );
 }
