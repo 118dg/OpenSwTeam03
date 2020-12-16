@@ -1,17 +1,37 @@
 import React from "react";
-import {Link} from "react-router-dom"
+import {HashRouter as Router, Route, Switch} from "react-router-dom";
+import Auth from "routes/Auth";
+import Main from "routes/Main";
+import Community from "routes/Community";
+import LogOut from "routes/LogOut";
+import Navigation from "components/Navigation";
 
-const Navigation = () => <nav>
-    <ul>
-        <li>
-            <Link to="/">Main</Link>
-        </li>
-        <li>
-            <Link to="/Community">Community</Link>
-        </li>
-        <li>
-            <Link to="/LogOut">Log Out</Link>
-        </li>
-    </ul>
-</nav>
-export default Navigation;
+
+const AppRouter = ({isLoggedIn, userObj }) => {
+    return (
+        <Router>
+            {isLoggedIn && <Navigation />}
+            <Switch>
+                {isLoggedIn ? (
+                    <>
+                    <Route exact path = "/">
+                        <Main />
+                    </Route> 
+                    <Route exact path = "/Community">
+                        <Community userObj={userObj}/>
+                    </Route> 
+                    <Route exact path = "/LogOut">
+                        <LogOut />
+                    </Route>
+                    </> 
+                ) : (
+                    <Route exact path = "/">
+                        <Auth />
+                    </Route>
+                )}
+            </Switch>
+        </Router>
+    );
+}
+
+export default AppRouter;
