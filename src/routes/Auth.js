@@ -4,31 +4,44 @@ import { authService, firebaseInstance } from "fbase";
 const Auth = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    //const [newAccount, setNewAccount] = useState(true);
     const [error, setError] = useState("");
     const onChange = (event) => {
-        const {
-            target: {name,value},
-        } = event;
-        if (name === "email") {
-            setEmail(value);
-        }
-        else if (name === "password"){
-            setPassword(value);
-        }
+      const {
+        target: { name, value },
+      } = event;
+      if (name === "email") {
+        setEmail(value);
+      } else if (name === "password") {
+        setPassword(value);
+      }
     };
     const onSubmit = async (event) => {
       event.preventDefault();
       try {
         let data;
-        data = await authService.signInWithEmailAndPassword(email, password);
+        /*
+        if (newAccount) {
+          data = await authService.createUserWithEmailAndPassword(
+            email,
+            password
+          );
+        } else {
+          data = await authService.signInWithEmailAndPassword(email, password);
+        }
         console.log(data);
+        */
+       data = await authService.signInWithEmailAndPassword(email, password);
+       console.log(data);
       } catch (error) {
         setError(error.message);
       }
     };
-    return(
+    //const toggleAccount = () => setNewAccount((prev) => !prev);
+
+      return (
         <div>
-           <form onSubmit={onSubmit}>
+          <form onSubmit={onSubmit}>
             <input
               name="email"
               type="email"
@@ -52,6 +65,6 @@ const Auth = () => {
             {error}
           </form>
         </div>
-    );
+  );
 };
 export default Auth;
